@@ -1,9 +1,9 @@
 import * as Popover from '@radix-ui/react-popover';
-import * as Checkbox from '@radix-ui/react-checkbox';
+
 import clsx from 'clsx';
 import { ProgressBar } from './ProgressBar';
-import { Check } from 'phosphor-react';
 import dayjs from 'dayjs';
+import { HabitsList } from './HabitsList';
 
 interface HabitDayProps {
   date: Date
@@ -32,7 +32,12 @@ export function HabitDay({ completed = 0, amount = 0, date }: HabitDayProps) {
 
       <Popover.Portal>
         <Popover.Content className='text-white min-w-[320px] p-6 rounded-2xl bg-zinc-900 flex flex-col'>
-          
+          <span className='font-semibold text-zinc-400'>{dayOfWeek}</span>
+          <span className='mt-1 font-extrabold leading-tight text-3xl'>{dayAndMonth}</span>
+
+          <ProgressBar progress={completedPercentage} />
+
+          <HabitsList date={date} />
 
           <Popover.Arrow height={8} width={16} className="fill-zinc-900" />
         </Popover.Content>
